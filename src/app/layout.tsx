@@ -1,4 +1,3 @@
-
 import type {Metadata} from 'next';
 import './globals.css';
 import Navigation from '@/components/Navigation';
@@ -28,7 +27,7 @@ export default function RootLayout({
         <footer className="py-12 border-t bg-card/30 backdrop-blur-sm text-center">
           <div className="container mx-auto px-4">
             <p className="font-headline text-lg font-semibold text-primary mb-2">Radiografía Social</p>
-            <p className="text-sm text-muted-foreground">© {new Date().getFullYear()} • Proyecto de Ética sobre la Toma de Decisiones</p>
+            <p className="text-sm text-muted-foreground">Grupo 4</p>
           </div>
         </footer>
       </body>
