@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
@@ -74,17 +75,6 @@ export default function ResultadoEncuestaPage() {
           <p className="text-xl text-muted-foreground max-w-2xl leading-relaxed">
             Explora las tendencias colectivas sobre cómo el miedo al error influye en nuestra capacidad de decisión y ética social.
           </p>
-        </div>
-        <div className="flex gap-4">
-          <Card className="bg-muted/30 border-none p-4 flex items-center gap-4">
-            <div className="p-3 rounded-full bg-white shadow-sm">
-              <Users className="w-6 h-6 text-primary" />
-            </div>
-            <div>
-              <p className="text-xs text-muted-foreground uppercase font-bold tracking-tighter">Participantes</p>
-              <p className="text-2xl font-bold font-headline">1,248</p>
-            </div>
-          </Card>
         </div>
       </div>
 
