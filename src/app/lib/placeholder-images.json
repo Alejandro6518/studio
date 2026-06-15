@@ -1,0 +1,23 @@
+
+{
+  "placeholderImages": [
+    {
+      "id": "hero-reflection",
+      "description": "A person reflecting by a window with a view of a path",
+      "imageUrl": "https://picsum.photos/seed/ruta1/1200/600",
+      "imageHint": "reflection path"
+    },
+    {
+      "id": "strategy-growth",
+      "description": "A small plant growing through a crack in the pavement",
+      "imageUrl": "https://picsum.photos/seed/ruta2/600/400",
+      "imageHint": "growth mindset"
+    },
+    {
+      "id": "community-support",
+      "description": "Abstract shapes representing community and connection",
+      "imageUrl": "https://picsum.photos/seed/ruta3/600/400",
+      "imageHint": "community connection"
+    }
+  ]
+}
