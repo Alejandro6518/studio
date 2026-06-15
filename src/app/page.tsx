@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ArrowRight, Sparkles, Footprints, ShieldCheck } from "lucide-react";
+import { ArrowRight, Sparkles, Footprints, ShieldCheck, Info, Lock } from "lucide-react";
 import { PlaceHolderImages } from "@/app/lib/placeholder-images";
 
 export default function Home() {
@@ -91,17 +91,30 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Quote Banner */}
-      <section className="bg-primary text-primary-foreground py-24 shadow-inner">
-        <div className="container mx-auto px-4 text-center max-w-4xl">
-          <h2 className="text-3xl md:text-5xl font-bold mb-10 font-headline italic">
-            "No es que tengamos miedo de las cosas difíciles; es que las cosas son difíciles porque tenemos miedo."
+      {/* Info Banner Section */}
+      <section className="bg-primary text-primary-foreground py-24 shadow-inner relative overflow-hidden">
+        <div className="absolute top-0 right-0 p-12 opacity-10">
+          <Lock className="w-64 h-64 rotate-12" />
+        </div>
+        <div className="container mx-auto px-4 text-center max-w-4xl relative z-10">
+          <div className="flex justify-center mb-8">
+            <div className="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center backdrop-blur-sm border border-white/30">
+              <Info className="w-8 h-8 text-white" />
+            </div>
+          </div>
+          <h2 className="text-2xl md:text-4xl font-bold mb-10 font-headline leading-relaxed">
+            “Este es un espacio seguro donde puedes compartir tus pensamientos sobre temas éticos de manera anónima. Tus respuestas serán analizadas con fines académicos”.
           </h2>
-          <p className="text-xl font-medium opacity-80 uppercase tracking-widest">— SÉNECA</p>
-          <div className="mt-12">
-            <Button size="lg" variant="secondary" className="rounded-full px-12 py-8 text-xl font-bold shadow-xl hover:scale-105 transition-transform" asChild>
-              <Link href="/encuesta">Ir a la Encuesta</Link>
-            </Button>
+          <div className="flex flex-col items-center gap-6">
+            <div className="w-24 h-1 bg-accent rounded-full opacity-50" />
+            <p className="text-lg opacity-90 max-w-2xl">
+              Valoramos tu privacidad y honestidad. Cada respuesta contribuye a una mejor comprensión de la ética en la toma de decisiones.
+            </p>
+            <div className="mt-8">
+              <Button size="lg" variant="secondary" className="rounded-full px-12 py-8 text-xl font-bold shadow-xl hover:scale-105 transition-transform" asChild>
+                <Link href="/encuesta">Ir a la Encuesta</Link>
+              </Button>
+            </div>
           </div>
         </div>
       </section>
