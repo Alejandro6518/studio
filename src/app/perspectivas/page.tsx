@@ -133,7 +133,7 @@ export default function PerspectivasPage() {
             <CardContent className="space-y-8">
                 <Sparkles className="w-12 h-12 mx-auto" />
                 <h3 className="text-3xl font-bold font-headline">"Tu proyecto de vida no es un examen que aprobar, sino una historia que escribir."</h3>
-                <p className="text-xl opacity-80">Ruta Sin Miedo está aquí para recordarte que cada borrón es parte de la obra maestra.</p>
+                <p className="text-xl opacity-80">Radiografía Social está aquí para recordarte que cada borrón es parte de la obra maestra.</p>
             </CardContent>
         </Card>
       </div>

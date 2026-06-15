@@ -4,7 +4,7 @@ import './globals.css';
 import Navigation from '@/components/Navigation';
 
 export const metadata: Metadata = {
-  title: 'Ruta Sin Miedo',
+  title: 'Radiografía Social',
   description: 'Un proyecto sobre la influencia del miedo al error en la toma de decisiones.',
 };
 
@@ -27,7 +27,7 @@ export default function RootLayout({
         </main>
         <footer className="py-12 border-t bg-card/30 backdrop-blur-sm text-center">
           <div className="container mx-auto px-4">
-            <p className="font-headline text-lg font-semibold text-primary mb-2">Ruta Sin Miedo</p>
+            <p className="font-headline text-lg font-semibold text-primary mb-2">Radiografía Social</p>
             <p className="text-sm text-muted-foreground">© {new Date().getFullYear()} • Proyecto de Ética sobre la Toma de Decisiones</p>
           </div>
         </footer>

@@ -24,7 +24,7 @@ export default function Navigation() {
             <div className="w-4 h-4 rounded-full bg-accent animate-pulse" />
           </div>
           <span className="font-headline text-2xl font-bold tracking-tight text-primary hidden sm:block">
-            Ruta Sin Miedo
+            Radiografía Social
           </span>
         </Link>
 

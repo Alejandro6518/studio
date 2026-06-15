@@ -114,7 +114,7 @@ export default function ExploradorPage() {
               </Button>
               <Button onClick={handleReflect} disabled={!userDecision || reflectionLoading} className="rounded-full px-10 py-7 text-lg font-bold shadow-lg">
                 {reflectionLoading ? <Loader2 className="w-5 h-5 mr-3 animate-spin" /> : <MessageCircle className="w-5 h-5 mr-3" />}
-                Analizar con Ruta Sin Miedo
+                Analizar con Radiografía Social
               </Button>
             </CardFooter>
           </Card>

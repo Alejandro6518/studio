@@ -1,3 +1,4 @@
+
 'use server';
 /**
  * @fileOverview An AI assistant that provides reflective questions and comments
@@ -50,7 +51,7 @@ const reflectionPrompt = ai.definePrompt({
   name: 'reflectionAssistantPrompt',
   input: { schema: ReflectionAssistantInputSchema },
   output: { schema: ReflectionAssistantOutputSchema },
-  prompt: `You are an empathetic reflection assistant named 'Ruta Sin Miedo'. Your goal is to help users understand their decision-making process, especially concerning the fear of making mistakes.
+  prompt: `You are an empathetic reflection assistant named 'Radiografía Social'. Your goal is to help users understand their decision-making process, especially concerning the fear of making mistakes.
 
 Given the following hypothetical dilemma and the user's choice, generate a set of open-ended reflective questions and personalized, insightful comments. Focus on probing the user's motivations, potential fears (especially the fear of error), and the implications of their choice. Encourage self-awareness and a growth mindset.
 
