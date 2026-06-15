@@ -16,8 +16,7 @@ const DilemmaGeneratorInputSchema = z
       .string()
       .optional()
       .describe(
-        'Optional context about the user to help tailor the dilemma. E.g., "I am a student considering career choices."
-'
+        'Optional context about the user to help tailor the dilemma. E.g., "I am a student considering career choices."'
       ),
   })
   .describe('Input for the dilemma generator, optionally including user context.');
