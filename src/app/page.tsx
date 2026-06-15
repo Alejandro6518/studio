@@ -1,4 +1,3 @@
-
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -36,8 +35,8 @@ export default function Home() {
           </p>
           <div className="flex flex-wrap justify-center gap-6 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300">
             <Button size="lg" className="rounded-full px-10 py-7 text-xl group shadow-lg" asChild>
-              <Link href="/explorar">
-                Iniciar exploración
+              <Link href="/encuesta">
+                Comenzar Encuesta
                 <ArrowRight className="ml-2 group-hover:translate-x-2 transition-transform" />
               </Link>
             </Button>
@@ -101,7 +100,7 @@ export default function Home() {
           <p className="text-xl font-medium opacity-80 uppercase tracking-widest">— SÉNECA</p>
           <div className="mt-12">
             <Button size="lg" variant="secondary" className="rounded-full px-12 py-8 text-xl font-bold shadow-xl hover:scale-105 transition-transform" asChild>
-              <Link href="/explorar">Ir al Explorador de Dilemas</Link>
+              <Link href="/encuesta">Ir a la Encuesta</Link>
             </Button>
           </div>
         </div>

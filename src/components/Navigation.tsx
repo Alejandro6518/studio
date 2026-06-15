@@ -1,16 +1,14 @@
-
 "use client";
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { Compass, Lightbulb, Users, Home } from "lucide-react";
+import { ClipboardList, BarChart3, Home } from "lucide-react";
 
 const navItems = [
   { name: "Inicio", href: "/", icon: Home },
-  { name: "Explorar", href: "/explorar", icon: Compass },
-  { name: "Perspectivas", href: "/perspectivas", icon: Lightbulb },
-  { name: "Comunidad", href: "/comunidad", icon: Users },
+  { name: "Encuesta", href: "/encuesta", icon: ClipboardList },
+  { name: "Resultados", href: "/resultado-de-encuesta", icon: BarChart3 },
 ];
 
 export default function Navigation() {
