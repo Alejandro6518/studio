@@ -1,32 +1,33 @@
 
 {
-  "totalResponses": 156,
+  "totalResponses": 63,
   "fearByCategory": [
-    { "category": "Académico", "level": 78 },
-    { "category": "Profesional", "level": 62 },
-    { "category": "Social", "level": 45 },
-    { "category": "Personal", "level": 58 }
+    { "category": "Laboral/Económico", "level": 73 },
+    { "category": "Relaciones", "level": 40 },
+    { "category": "Académico", "level": 32 },
+    { "category": "Independencia", "level": 24 }
   ],
   "emotionalImpact": [
-    { "name": "Parálisis/Duda", "value": 35, "color": "hsl(var(--primary))" },
-    { "name": "Validación Externa", "value": 25, "color": "hsl(var(--accent))" },
-    { "name": "Ansiedad", "value": 30, "color": "hsl(var(--destructive))" },
-    { "name": "Crecimiento", "value": 10, "color": "#10b981" }
+    { "name": "Ansiedad/Miedo", "value": 44, "color": "hsl(var(--primary))" },
+    { "name": "Motivación/Esperanza", "value": 32, "color": "hsl(var(--accent))" },
+    { "name": "Confusión", "value": 16, "color": "hsl(var(--destructive))" },
+    { "name": "Tranquilidad", "value": 8, "color": "#10b981" }
   ],
   "ageDistribution": [
-    { "range": "18-24", "count": 85 },
-    { "range": "25-34", "count": 42 },
-    { "range": "35-44", "count": 18 },
-    { "range": "45+", "count": 11 }
+    { "range": "Presión: Mucha", "count": 24 },
+    { "range": "Presión: Bastante", "count": 22 },
+    { "range": "Presión: Poca", "count": 14 },
+    { "range": "Presión: Ninguna", "count": 3 }
   ],
   "keyMetrics": {
-    "resilienceIndex": 72,
-    "perfectionismBias": 58,
-    "averageDecisionTime": "48h"
+    "resilienceIndex": 35,
+    "perfectionismBias": 73,
+    "averageDecisionTime": "Alta Presión"
   },
   "keyInsights": [
-    "El ámbito académico es donde se percibe un mayor impacto del miedo al error (78%).",
-    "La parálisis por análisis es la respuesta más común ante situaciones de alta incertidumbre.",
-    "El 58% de los participantes admite que el perfeccionismo retrasa sus decisiones críticas."
+    "El 73% de los encuestados identifica el trabajo y el futuro económico como la mayor fuente de miedo al error.",
+    "La ansiedad es la emoción predominante (44%) al proyectar el futuro personal.",
+    "Un alto porcentaje (73%) siente una presión significativa por tener la vida 'resuelta' a cierta edad.",
+    "El miedo recurrente es el 'desperdicio de tiempo' y el arrepentimiento tras una mala elección."
   ]
 }

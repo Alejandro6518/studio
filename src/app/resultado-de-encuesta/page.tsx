@@ -25,7 +25,6 @@ import {
 import { 
   Brain, 
   ShieldAlert, 
-  Target, 
   TrendingUp, 
   Info,
   ArrowUpRight,
@@ -38,11 +37,11 @@ import surveyData from "@/app/lib/survey-results.json";
 
 const chartConfig = {
   level: {
-    label: "Nivel de Miedo",
+    label: "Porcentaje (%)",
     color: "hsl(var(--primary))",
   },
   count: {
-    label: "Cantidad",
+    label: "Respuestas",
     color: "hsl(var(--accent))",
   }
 } satisfies ChartConfig;
@@ -55,11 +54,11 @@ export default function ResultadoEncuestaPage() {
         <div className="space-y-4">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary font-bold text-sm tracking-wide">
             <TrendingUp className="w-4 h-4" />
-            <span>RESULTADOS PROYECTO ÉTICA - GRUPO 4</span>
+            <span>RESULTADOS REALES - GRUPO 4</span>
           </div>
           <h1 className="text-5xl md:text-6xl font-bold font-headline">Radiografía de Datos</h1>
           <p className="text-xl text-muted-foreground max-w-2xl leading-relaxed">
-            Un análisis cuantitativo sobre la influencia del miedo al error en la toma de decisiones de nuestra comunidad.
+            Análisis de las 63 respuestas obtenidas sobre el impacto del miedo al error en la toma de decisiones.
           </p>
         </div>
         <Card className="bg-primary/5 border-primary/20 p-6 flex items-center gap-6 rounded-3xl">
@@ -67,8 +66,8 @@ export default function ResultadoEncuestaPage() {
             <Users className="w-8 h-8" />
           </div>
           <div>
-            <p className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Total Respuestas</p>
-            <p className="text-4xl font-bold font-headline">{surveyData.totalResponses}</p>
+            <p className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Muestra Analizada</p>
+            <p className="text-4xl font-bold font-headline">{surveyData.totalResponses} pers.</p>
           </div>
         </Card>
       </div>
@@ -79,26 +78,26 @@ export default function ResultadoEncuestaPage() {
           <div className="absolute -right-4 -bottom-4 opacity-10 group-hover:scale-110 transition-transform">
             <Brain className="w-32 h-32" />
           </div>
-          <h3 className="font-bold uppercase tracking-widest text-xs opacity-80 mb-4">Índice de Resiliencia</h3>
+          <h3 className="font-bold uppercase tracking-widest text-xs opacity-80 mb-4">Visión Positiva (Futuro)</h3>
           <div className="flex items-end gap-2 mb-4">
             <span className="text-6xl font-bold font-headline">{surveyData.keyMetrics.resilienceIndex}%</span>
             <ArrowUpRight className="w-8 h-8 mb-2 text-accent" />
           </div>
-          <p className="text-primary-foreground/80 leading-snug">Usuarios con capacidad de aprender tras el error.</p>
+          <p className="text-primary-foreground/80 leading-snug">Encuestados que sienten esperanza o motivación.</p>
         </Card>
 
         <Card className="bg-accent text-accent-foreground border-none shadow-xl p-8 rounded-[2.5rem]">
-          <h3 className="font-bold uppercase tracking-widest text-xs opacity-80 mb-4">Sesgo de Perfeccionismo</h3>
+          <h3 className="font-bold uppercase tracking-widest text-xs opacity-80 mb-4">Presión Social por Edad</h3>
           <div className="text-6xl font-bold font-headline mb-4">{surveyData.keyMetrics.perfectionismBias}%</div>
-          <p className="opacity-90 leading-snug">Reportan retrasos en decisiones por miedo a no ser perfectos.</p>
+          <p className="opacity-90 leading-snug">Sienten presión alta o mucha por 'resolver' su vida pronto.</p>
         </Card>
 
         <Card className="bg-card border-2 border-muted p-8 rounded-[2.5rem] flex flex-col justify-center items-center text-center">
           <div className="w-16 h-16 rounded-full bg-muted flex items-center justify-center mb-4">
             <Clock className="w-8 h-8 text-primary" />
           </div>
-          <h3 className="font-bold uppercase tracking-widest text-xs text-muted-foreground mb-2">Tiempo Promedio de Duda</h3>
-          <p className="text-5xl font-bold font-headline text-primary">{surveyData.keyMetrics.averageDecisionTime}</p>
+          <h3 className="font-bold uppercase tracking-widest text-xs text-muted-foreground mb-2">Estado de Decisión</h3>
+          <p className="text-4xl font-bold font-headline text-primary">{surveyData.keyMetrics.averageDecisionTime}</p>
         </Card>
       </div>
 
@@ -108,9 +107,9 @@ export default function ResultadoEncuestaPage() {
           <CardHeader className="p-10 border-b bg-muted/10">
             <CardTitle className="text-3xl font-headline flex items-center gap-3">
               <ShieldAlert className="w-8 h-8 text-accent" />
-              Prevalencia por Ámbito
+              Prevalencia del Miedo por Ámbito
             </CardTitle>
-            <CardDescription className="text-lg">Nivel de ansiedad percibida en diferentes áreas de la vida.</CardDescription>
+            <CardDescription className="text-lg">Frecuencia de mención de miedos específicos en la muestra.</CardDescription>
           </CardHeader>
           <CardContent className="p-10">
             <ChartContainer config={chartConfig} className="h-[400px] w-full">
@@ -140,7 +139,7 @@ export default function ResultadoEncuestaPage() {
           <Card className="h-full border-none shadow-2xl bg-muted/20 rounded-[2.5rem] p-10">
             <div className="flex items-center gap-3 mb-8">
               <Lightbulb className="w-8 h-8 text-accent" />
-              <h3 className="text-2xl font-bold font-headline">Insights Clave</h3>
+              <h3 className="text-2xl font-bold font-headline">Análisis Cualitativo</h3>
             </div>
             <div className="space-y-6">
               {surveyData.keyInsights.map((insight, i) => (
@@ -148,18 +147,18 @@ export default function ResultadoEncuestaPage() {
                   <div className="w-8 h-8 rounded-full bg-accent/10 flex items-center justify-center shrink-0 text-accent font-bold">
                     {i + 1}
                   </div>
-                  <p className="text-muted-foreground leading-relaxed">{insight}</p>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{insight}</p>
                 </div>
               ))}
             </div>
           </Card>
         </div>
 
-        {/* Distribución de Edad */}
+        {/* Distribución de Presión por Edad */}
         <Card className="lg:col-span-5 border-none shadow-2xl bg-white rounded-[2.5rem]">
           <CardHeader className="p-10">
-            <CardTitle className="text-3xl font-headline">Distribución por Edad</CardTitle>
-            <CardDescription className="text-lg">Participación segmentada por rango generacional.</CardDescription>
+            <CardTitle className="text-3xl font-headline">Presión por la Edad</CardTitle>
+            <CardDescription className="text-lg">¿Cuánto sientes que debes tener resuelto hoy?</CardDescription>
           </CardHeader>
           <CardContent className="p-10">
             <ChartContainer config={chartConfig} className="h-[300px] w-full">
@@ -185,7 +184,7 @@ export default function ResultadoEncuestaPage() {
         <Card className="lg:col-span-7 border-none shadow-2xl bg-white rounded-[2.5rem]">
           <CardHeader className="p-10">
             <CardTitle className="text-3xl font-headline">Impacto Emocional</CardTitle>
-            <CardDescription className="text-lg">Reacciones predominantes ante la posibilidad de un error.</CardDescription>
+            <CardDescription className="text-lg">Emoción predominante al pensar en el futuro.</CardDescription>
           </CardHeader>
           <CardContent className="p-10 flex flex-col md:flex-row items-center gap-10">
             <div className="h-[300px] w-full max-w-[300px] relative">
@@ -207,7 +206,7 @@ export default function ResultadoEncuestaPage() {
               </ResponsiveContainer>
               <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
                 <span className="text-xs font-bold text-muted-foreground uppercase">Principal</span>
-                <span className="text-xl font-bold font-headline text-primary">Parálisis</span>
+                <span className="text-xl font-bold font-headline text-primary">Ansiedad</span>
               </div>
             </div>
             <div className="flex-1 space-y-4 w-full">
@@ -230,11 +229,11 @@ export default function ResultadoEncuestaPage() {
         <div className="bg-primary/5 p-12 rounded-[3.5rem] border border-primary/10 space-y-6">
           <Info className="w-12 h-12 text-primary mx-auto opacity-40" />
           <h2 className="text-3xl font-bold font-headline italic text-primary">
-            "Este estudio busca transformar el miedo en una herramienta de aprendizaje ético."
+            "Este estudio revela que el miedo al error no es solo una barrera individual, sino una presión social colectiva."
           </h2>
           <div className="flex flex-col items-center gap-2">
             <p className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Proyecto Realizado por</p>
-            <p className="text-2xl font-bold font-headline">Grupo 4 - Universidad</p>
+            <p className="text-2xl font-bold font-headline">Grupo 4 - Ética</p>
           </div>
         </div>
       </div>
