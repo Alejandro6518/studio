@@ -1,4 +1,3 @@
-
 "use client";
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
@@ -57,9 +56,6 @@ export default function ResultadoEncuestaPage() {
             <span>RESULTADOS REALES - GRUPO 4</span>
           </div>
           <h1 className="text-5xl md:text-6xl font-bold font-headline">Radiografía de Datos</h1>
-          <p className="text-xl text-muted-foreground max-w-2xl leading-relaxed">
-            Análisis de las 63 respuestas obtenidas sobre el impacto del miedo al error en la toma de decisiones.
-          </p>
         </div>
         <Card className="bg-primary/5 border-primary/20 p-6 flex items-center gap-6 rounded-3xl">
           <div className="p-3 bg-primary rounded-2xl text-white">
