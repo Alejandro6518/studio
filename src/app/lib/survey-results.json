@@ -1,26 +1,32 @@
 
 {
+  "totalResponses": 156,
   "fearByCategory": [
-    { "category": "Profesional", "level": 65 },
-    { "category": "Personal", "level": 45 },
-    { "category": "Académico", "level": 80 },
-    { "category": "Social", "level": 55 }
+    { "category": "Académico", "level": 78 },
+    { "category": "Profesional", "level": 62 },
+    { "category": "Social", "level": 45 },
+    { "category": "Personal", "level": 58 }
   ],
   "emotionalImpact": [
-    { "name": "Parálisis", "value": 30, "color": "hsl(var(--destructive))" },
-    { "name": "Duda", "value": 45, "color": "hsl(var(--accent))" },
-    { "name": "Crecimiento", "value": 25, "color": "hsl(var(--primary))" }
+    { "name": "Parálisis/Duda", "value": 35, "color": "hsl(var(--primary))" },
+    { "name": "Validación Externa", "value": 25, "color": "hsl(var(--accent))" },
+    { "name": "Ansiedad", "value": 30, "color": "hsl(var(--destructive))" },
+    { "name": "Crecimiento", "value": 10, "color": "#10b981" }
   ],
-  "confidenceTrend": [
-    { "month": "Ene", "val": 40 },
-    { "month": "Feb", "val": 45 },
-    { "month": "Mar", "val": 42 },
-    { "month": "Abr", "val": 55 },
-    { "month": "May", "val": 62 },
-    { "month": "Jun", "val": 75 }
+  "ageDistribution": [
+    { "range": "18-24", "count": 85 },
+    { "range": "25-34", "count": 42 },
+    { "range": "35-44", "count": 18 },
+    { "range": "45+", "count": 11 }
   ],
   "keyMetrics": {
     "resilienceIndex": 72,
-    "perfectionismBias": 58
-  }
+    "perfectionismBias": 58,
+    "averageDecisionTime": "48h"
+  },
+  "keyInsights": [
+    "El ámbito académico es donde se percibe un mayor impacto del miedo al error (78%).",
+    "La parálisis por análisis es la respuesta más común ante situaciones de alta incertidumbre.",
+    "El 58% de los participantes admite que el perfeccionismo retrasa sus decisiones críticas."
+  ]
 }

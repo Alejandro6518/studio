@@ -12,9 +12,9 @@ import {
   Pie, 
   PieChart, 
   Cell,
-  Line,
-  LineChart,
-  Tooltip as RechartsTooltip
+  Tooltip as RechartsTooltip,
+  Area,
+  AreaChart
 } from "recharts";
 import { 
   ChartContainer, 
@@ -28,10 +28,12 @@ import {
   Target, 
   TrendingUp, 
   Info,
-  ArrowUpRight
+  ArrowUpRight,
+  Users,
+  Lightbulb,
+  Clock
 } from "lucide-react";
 
-// Importamos los datos desde el archivo JSON
 import surveyData from "@/app/lib/survey-results.json";
 
 const chartConfig = {
@@ -39,47 +41,81 @@ const chartConfig = {
     label: "Nivel de Miedo",
     color: "hsl(var(--primary))",
   },
+  count: {
+    label: "Cantidad",
+    color: "hsl(var(--accent))",
+  }
 } satisfies ChartConfig;
 
 export default function ResultadoEncuestaPage() {
-  // Mapeamos los datos del JSON para los gráficos
-  const fearData = surveyData.fearByCategory.map(item => ({
-    ...item,
-    fill: "var(--color-level)"
-  }));
-
   return (
-    <div className="container mx-auto px-4 py-16 space-y-12 max-w-7xl">
-      {/* Header */}
-      <div className="flex flex-col md:flex-row justify-between items-end gap-6 mb-8">
+    <div className="container mx-auto px-4 py-16 space-y-12 max-w-7xl animate-in fade-in duration-700">
+      {/* Header con Branding de Grupo 4 */}
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-8 border-b pb-8">
         <div className="space-y-4">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary font-bold text-sm tracking-wide">
             <TrendingUp className="w-4 h-4" />
-            <span>ANÁLISIS EN TIEMPO REAL</span>
+            <span>RESULTADOS PROYECTO ÉTICA - GRUPO 4</span>
           </div>
-          <h1 className="text-5xl font-bold font-headline">Radiografía de Datos</h1>
+          <h1 className="text-5xl md:text-6xl font-bold font-headline">Radiografía de Datos</h1>
           <p className="text-xl text-muted-foreground max-w-2xl leading-relaxed">
-            Explora las tendencias colectivas sobre cómo el miedo al error influye en nuestra capacidad de decisión y ética social.
+            Un análisis cuantitativo sobre la influencia del miedo al error en la toma de decisiones de nuestra comunidad.
           </p>
         </div>
+        <Card className="bg-primary/5 border-primary/20 p-6 flex items-center gap-6 rounded-3xl">
+          <div className="p-3 bg-primary rounded-2xl text-white">
+            <Users className="w-8 h-8" />
+          </div>
+          <div>
+            <p className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Total Respuestas</p>
+            <p className="text-4xl font-bold font-headline">{surveyData.totalResponses}</p>
+          </div>
+        </Card>
       </div>
 
-      {/* Main Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
-        
-        {/* Gráfico de Barras - Niveles por Categoría */}
-        <Card className="md:col-span-8 border-none shadow-2xl bg-white overflow-hidden">
-          <CardHeader className="p-8 border-b bg-muted/10">
-            <CardTitle className="text-2xl font-headline flex items-center gap-3">
-              <ShieldAlert className="w-6 h-6 text-accent" />
-              Prevalencia del Miedo por Ámbito
+      {/* Grid de Métricas Principales */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <Card className="bg-primary text-primary-foreground border-none shadow-xl overflow-hidden relative group p-8 rounded-[2.5rem]">
+          <div className="absolute -right-4 -bottom-4 opacity-10 group-hover:scale-110 transition-transform">
+            <Brain className="w-32 h-32" />
+          </div>
+          <h3 className="font-bold uppercase tracking-widest text-xs opacity-80 mb-4">Índice de Resiliencia</h3>
+          <div className="flex items-end gap-2 mb-4">
+            <span className="text-6xl font-bold font-headline">{surveyData.keyMetrics.resilienceIndex}%</span>
+            <ArrowUpRight className="w-8 h-8 mb-2 text-accent" />
+          </div>
+          <p className="text-primary-foreground/80 leading-snug">Usuarios con capacidad de aprender tras el error.</p>
+        </Card>
+
+        <Card className="bg-accent text-accent-foreground border-none shadow-xl p-8 rounded-[2.5rem]">
+          <h3 className="font-bold uppercase tracking-widest text-xs opacity-80 mb-4">Sesgo de Perfeccionismo</h3>
+          <div className="text-6xl font-bold font-headline mb-4">{surveyData.keyMetrics.perfectionismBias}%</div>
+          <p className="opacity-90 leading-snug">Reportan retrasos en decisiones por miedo a no ser perfectos.</p>
+        </Card>
+
+        <Card className="bg-card border-2 border-muted p-8 rounded-[2.5rem] flex flex-col justify-center items-center text-center">
+          <div className="w-16 h-16 rounded-full bg-muted flex items-center justify-center mb-4">
+            <Clock className="w-8 h-8 text-primary" />
+          </div>
+          <h3 className="font-bold uppercase tracking-widest text-xs text-muted-foreground mb-2">Tiempo Promedio de Duda</h3>
+          <p className="text-5xl font-bold font-headline text-primary">{surveyData.keyMetrics.averageDecisionTime}</p>
+        </Card>
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        {/* Gráfico de Barras - Ámbitos */}
+        <Card className="lg:col-span-8 border-none shadow-2xl bg-white rounded-[2.5rem] overflow-hidden">
+          <CardHeader className="p-10 border-b bg-muted/10">
+            <CardTitle className="text-3xl font-headline flex items-center gap-3">
+              <ShieldAlert className="w-8 h-8 text-accent" />
+              Prevalencia por Ámbito
             </CardTitle>
-            <CardDescription>Puntuación media de ansiedad percibida al tomar decisiones críticas.</CardDescription>
+            <CardDescription className="text-lg">Nivel de ansiedad percibida en diferentes áreas de la vida.</CardDescription>
           </CardHeader>
-          <CardContent className="p-8">
-            <ChartContainer config={chartConfig} className="h-[350px] w-full">
-              <BarChart data={fearData}>
-                <CartesianGrid vertical={false} strokeDasharray="3 3" opacity={0.3} />
+          <CardContent className="p-10">
+            <ChartContainer config={chartConfig} className="h-[400px] w-full">
+              <BarChart data={surveyData.fearByCategory}>
+                <CartesianGrid vertical={false} strokeDasharray="3 3" opacity={0.2} />
                 <XAxis 
                   dataKey="category" 
                   axisLine={false} 
@@ -90,59 +126,75 @@ export default function ResultadoEncuestaPage() {
                 <ChartTooltip content={<ChartTooltipContent />} />
                 <Bar 
                   dataKey="level" 
-                  radius={[8, 8, 0, 0]} 
-                  barSize={60}
+                  fill="hsl(var(--primary))"
+                  radius={[12, 12, 0, 0]} 
+                  barSize={80}
                 />
               </BarChart>
             </ChartContainer>
           </CardContent>
         </Card>
 
-        {/* Métricas Rápidas */}
-        <div className="md:col-span-4 flex flex-col gap-6">
-          <Card className="flex-1 bg-primary text-primary-foreground border-none shadow-xl overflow-hidden relative group">
-            <div className="absolute -right-8 -bottom-8 opacity-10 group-hover:scale-110 transition-transform">
-              <Brain className="w-48 h-48" />
+        {/* Hallazgos Clave */}
+        <div className="lg:col-span-4 space-y-6">
+          <Card className="h-full border-none shadow-2xl bg-muted/20 rounded-[2.5rem] p-10">
+            <div className="flex items-center gap-3 mb-8">
+              <Lightbulb className="w-8 h-8 text-accent" />
+              <h3 className="text-2xl font-bold font-headline">Insights Clave</h3>
             </div>
-            <CardContent className="p-8 space-y-4">
-              <h3 className="font-bold uppercase tracking-widest text-sm opacity-80">Índice de Resiliencia</h3>
-              <div className="flex items-end gap-2">
-                <span className="text-6xl font-bold font-headline">{surveyData.keyMetrics.resilienceIndex}%</span>
-                <ArrowUpRight className="w-8 h-8 mb-2 text-accent" />
-              </div>
-              <p className="text-primary-foreground/80 leading-snug">
-                La mayoría de los usuarios reportan una tendencia a aprender tras el error después de un análisis consciente.
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card className="flex-1 border-none shadow-xl bg-accent text-accent-foreground overflow-hidden relative">
-            <CardContent className="p-8 space-y-4">
-              <h3 className="font-bold uppercase tracking-widest text-sm opacity-80">Sesgo de Perfeccionismo</h3>
-              <div className="text-6xl font-bold font-headline">{surveyData.keyMetrics.perfectionismBias}%</div>
-              <p className="opacity-90 leading-snug">
-                Personas que admiten que el miedo a no ser perfectos retrasa su toma de decisiones más de 48 horas.
-              </p>
-            </CardContent>
+            <div className="space-y-6">
+              {surveyData.keyInsights.map((insight, i) => (
+                <div key={i} className="flex gap-4 p-4 bg-white rounded-2xl shadow-sm">
+                  <div className="w-8 h-8 rounded-full bg-accent/10 flex items-center justify-center shrink-0 text-accent font-bold">
+                    {i + 1}
+                  </div>
+                  <p className="text-muted-foreground leading-relaxed">{insight}</p>
+                </div>
+              ))}
+            </div>
           </Card>
         </div>
 
-        {/* Gráfico Circular - Impacto Emocional */}
-        <Card className="md:col-span-5 border-none shadow-2xl bg-white">
-          <CardHeader className="p-8">
-            <CardTitle className="text-2xl font-headline">Respuesta Ante el Error</CardTitle>
-            <CardDescription>Distribución de reacciones emocionales predominantes.</CardDescription>
+        {/* Distribución de Edad */}
+        <Card className="lg:col-span-5 border-none shadow-2xl bg-white rounded-[2.5rem]">
+          <CardHeader className="p-10">
+            <CardTitle className="text-3xl font-headline">Distribución por Edad</CardTitle>
+            <CardDescription className="text-lg">Participación segmentada por rango generacional.</CardDescription>
           </CardHeader>
-          <CardContent className="p-8 flex flex-col items-center">
-            <div className="h-[300px] w-full relative">
+          <CardContent className="p-10">
+            <ChartContainer config={chartConfig} className="h-[300px] w-full">
+              <AreaChart data={surveyData.ageDistribution}>
+                <CartesianGrid vertical={false} strokeDasharray="3 3" opacity={0.2} />
+                <XAxis dataKey="range" axisLine={false} tickLine={false} />
+                <YAxis hide />
+                <ChartTooltip content={<ChartTooltipContent />} />
+                <Area 
+                  type="monotone" 
+                  dataKey="count" 
+                  stroke="hsl(var(--accent))" 
+                  fill="hsl(var(--accent))" 
+                  fillOpacity={0.2} 
+                  strokeWidth={4}
+                />
+              </AreaChart>
+            </ChartContainer>
+          </CardContent>
+        </Card>
+
+        {/* Respuesta Emocional */}
+        <Card className="lg:col-span-7 border-none shadow-2xl bg-white rounded-[2.5rem]">
+          <CardHeader className="p-10">
+            <CardTitle className="text-3xl font-headline">Impacto Emocional</CardTitle>
+            <CardDescription className="text-lg">Reacciones predominantes ante la posibilidad de un error.</CardDescription>
+          </CardHeader>
+          <CardContent className="p-10 flex flex-col md:flex-row items-center gap-10">
+            <div className="h-[300px] w-full max-w-[300px] relative">
               <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
                   <Pie
                     data={surveyData.emotionalImpact}
-                    cx="50%"
-                    cy="50%"
                     innerRadius={80}
-                    outerRadius={110}
+                    outerRadius={120}
                     paddingAngle={8}
                     dataKey="value"
                   >
@@ -154,70 +206,36 @@ export default function ResultadoEncuestaPage() {
                 </PieChart>
               </ResponsiveContainer>
               <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
-                <span className="text-sm font-bold text-muted-foreground uppercase">Top Reacción</span>
-                <span className="text-2xl font-bold font-headline">Duda</span>
+                <span className="text-xs font-bold text-muted-foreground uppercase">Principal</span>
+                <span className="text-xl font-bold font-headline text-primary">Parálisis</span>
               </div>
             </div>
-            <div className="flex flex-col justify-center gap-4 mt-6 w-full">
+            <div className="flex-1 space-y-4 w-full">
               {surveyData.emotionalImpact.map((item, i) => (
-                <div key={i} className="flex items-center gap-3">
-                  <div className="w-3 h-3 rounded-full" style={{ backgroundColor: item.color }} />
-                  <span className="text-sm font-medium">{item.name} ({item.value}%)</span>
+                <div key={i} className="flex items-center justify-between p-4 rounded-2xl border bg-muted/5">
+                  <div className="flex items-center gap-3">
+                    <div className="w-3 h-3 rounded-full" style={{ backgroundColor: item.color }} />
+                    <span className="font-medium">{item.name}</span>
+                  </div>
+                  <span className="font-bold text-primary">{item.value}%</span>
                 </div>
               ))}
             </div>
           </CardContent>
         </Card>
-
-        {/* Gráfico de Líneas - Tendencia de Confianza */}
-        <Card className="md:col-span-7 border-none shadow-2xl bg-white">
-          <CardHeader className="p-8">
-            <CardTitle className="text-2xl font-headline flex items-center gap-3">
-              <Target className="w-6 h-6 text-primary" />
-              Evolución de la Confianza Ética
-            </CardTitle>
-            <CardDescription>Incremento en la seguridad al decidir tras participar en el proyecto.</CardDescription>
-          </CardHeader>
-          <CardContent className="p-8">
-            <div className="h-[250px] w-full">
-              <ResponsiveContainer width="100%" height="100%">
-                <LineChart data={surveyData.confidenceTrend}>
-                  <CartesianGrid vertical={false} strokeDasharray="3 3" opacity={0.2} />
-                  <XAxis 
-                    dataKey="month" 
-                    axisLine={false} 
-                    tickLine={false}
-                    tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 12 }}
-                  />
-                  <YAxis hide />
-                  <RechartsTooltip 
-                    contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 10px 15px -3px rgba(0,0,0,0.1)' }}
-                  />
-                  <Line 
-                    type="monotone" 
-                    dataKey="val" 
-                    stroke="hsl(var(--primary))" 
-                    strokeWidth={4} 
-                    dot={{ r: 6, fill: 'hsl(var(--primary))', strokeWidth: 2, stroke: '#fff' }}
-                    activeDot={{ r: 8 }}
-                  />
-                </LineChart>
-              </ResponsiveContainer>
-            </div>
-          </CardContent>
-        </Card>
       </div>
 
-      {/* Footer Info */}
+      {/* Footer del Grupo 4 */}
       <div className="max-w-4xl mx-auto text-center py-12">
-        <div className="bg-muted/30 p-10 rounded-[3rem] border border-muted/50 space-y-6">
+        <div className="bg-primary/5 p-12 rounded-[3.5rem] border border-primary/10 space-y-6">
           <Info className="w-12 h-12 text-primary mx-auto opacity-40" />
-          <h2 className="text-3xl font-bold font-headline italic">
-            "Los datos nos dicen qué sucede; la reflexión nos dice por qué importa."
+          <h2 className="text-3xl font-bold font-headline italic text-primary">
+            "Este estudio busca transformar el miedo en una herramienta de aprendizaje ético."
           </h2>
-          <p className="text-muted-foreground leading-relaxed">
-            Este panel se actualiza periódicamente basándose en las respuestas registradas en el sistema de datos. Cada dato es una oportunidad para entender mejor la condición humana frente a la incertidumbre.
-          </p>
+          <div className="flex flex-col items-center gap-2">
+            <p className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Proyecto Realizado por</p>
+            <p className="text-2xl font-bold font-headline">Grupo 4 - Universidad</p>
+          </div>
         </div>
       </div>
     </div>
