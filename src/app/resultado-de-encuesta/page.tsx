@@ -26,33 +26,13 @@ import {
   Brain, 
   ShieldAlert, 
   Target, 
-  Users, 
   TrendingUp, 
   Info,
   ArrowUpRight
 } from "lucide-react";
 
-const fearData = [
-  { category: "Profesional", level: 65, fill: "var(--color-level)" },
-  { category: "Personal", level: 45, fill: "var(--color-level)" },
-  { category: "Académico", level: 80, fill: "var(--color-level)" },
-  { category: "Social", level: 55, fill: "var(--color-level)" },
-];
-
-const impactData = [
-  { name: "Parálisis", value: 30, color: "hsl(var(--destructive))" },
-  { name: "Duda", value: 45, color: "hsl(var(--accent))" },
-  { name: "Crecimiento", value: 25, color: "hsl(var(--primary))" },
-];
-
-const confidenceTrend = [
-  { month: "Ene", val: 40 },
-  { month: "Feb", val: 45 },
-  { month: "Mar", val: 42 },
-  { month: "Abr", val: 55 },
-  { month: "May", val: 62 },
-  { month: "Jun", val: 75 },
-];
+// Importamos los datos desde el archivo JSON
+import surveyData from "@/app/lib/survey-results.json";
 
 const chartConfig = {
   level: {
@@ -62,6 +42,12 @@ const chartConfig = {
 } satisfies ChartConfig;
 
 export default function ResultadoEncuestaPage() {
+  // Mapeamos los datos del JSON para los gráficos
+  const fearData = surveyData.fearByCategory.map(item => ({
+    ...item,
+    fill: "var(--color-level)"
+  }));
+
   return (
     <div className="container mx-auto px-4 py-16 space-y-12 max-w-7xl">
       {/* Header */}
@@ -121,7 +107,7 @@ export default function ResultadoEncuestaPage() {
             <CardContent className="p-8 space-y-4">
               <h3 className="font-bold uppercase tracking-widest text-sm opacity-80">Índice de Resiliencia</h3>
               <div className="flex items-end gap-2">
-                <span className="text-6xl font-bold font-headline">72%</span>
+                <span className="text-6xl font-bold font-headline">{surveyData.keyMetrics.resilienceIndex}%</span>
                 <ArrowUpRight className="w-8 h-8 mb-2 text-accent" />
               </div>
               <p className="text-primary-foreground/80 leading-snug">
@@ -133,7 +119,7 @@ export default function ResultadoEncuestaPage() {
           <Card className="flex-1 border-none shadow-xl bg-accent text-accent-foreground overflow-hidden relative">
             <CardContent className="p-8 space-y-4">
               <h3 className="font-bold uppercase tracking-widest text-sm opacity-80">Sesgo de Perfeccionismo</h3>
-              <div className="text-6xl font-bold font-headline">58%</div>
+              <div className="text-6xl font-bold font-headline">{surveyData.keyMetrics.perfectionismBias}%</div>
               <p className="opacity-90 leading-snug">
                 Personas que admiten que el miedo a no ser perfectos retrasa su toma de decisiones más de 48 horas.
               </p>
@@ -147,12 +133,12 @@ export default function ResultadoEncuestaPage() {
             <CardTitle className="text-2xl font-headline">Respuesta Ante el Error</CardTitle>
             <CardDescription>Distribución de reacciones emocionales predominantes.</CardDescription>
           </CardHeader>
-          <CardContent className="p-8 flex justify-center">
+          <CardContent className="p-8 flex flex-col items-center">
             <div className="h-[300px] w-full relative">
               <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
                   <Pie
-                    data={impactData}
+                    data={surveyData.emotionalImpact}
                     cx="50%"
                     cy="50%"
                     innerRadius={80}
@@ -160,7 +146,7 @@ export default function ResultadoEncuestaPage() {
                     paddingAngle={8}
                     dataKey="value"
                   >
-                    {impactData.map((entry, index) => (
+                    {surveyData.emotionalImpact.map((entry, index) => (
                       <Cell key={`cell-${index}`} fill={entry.color} />
                     ))}
                   </Pie>
@@ -172,8 +158,8 @@ export default function ResultadoEncuestaPage() {
                 <span className="text-2xl font-bold font-headline">Duda</span>
               </div>
             </div>
-            <div className="flex flex-col justify-center gap-4 ml-8">
-              {impactData.map((item, i) => (
+            <div className="flex flex-col justify-center gap-4 mt-6 w-full">
+              {surveyData.emotionalImpact.map((item, i) => (
                 <div key={i} className="flex items-center gap-3">
                   <div className="w-3 h-3 rounded-full" style={{ backgroundColor: item.color }} />
                   <span className="text-sm font-medium">{item.name} ({item.value}%)</span>
@@ -195,7 +181,7 @@ export default function ResultadoEncuestaPage() {
           <CardContent className="p-8">
             <div className="h-[250px] w-full">
               <ResponsiveContainer width="100%" height="100%">
-                <LineChart data={confidenceTrend}>
+                <LineChart data={surveyData.confidenceTrend}>
                   <CartesianGrid vertical={false} strokeDasharray="3 3" opacity={0.2} />
                   <XAxis 
                     dataKey="month" 
@@ -230,7 +216,7 @@ export default function ResultadoEncuestaPage() {
             "Los datos nos dicen qué sucede; la reflexión nos dice por qué importa."
           </h2>
           <p className="text-muted-foreground leading-relaxed">
-            Este panel se actualiza periódicamente basándose en las respuestas anónimas de nuestra comunidad. Cada dato es una oportunidad para entender mejor la condición humana frente a la incertidumbre.
+            Este panel se actualiza periódicamente basándose en las respuestas registradas en el sistema de datos. Cada dato es una oportunidad para entender mejor la condición humana frente a la incertidumbre.
           </p>
         </div>
       </div>

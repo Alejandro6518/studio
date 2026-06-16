@@ -1,0 +1,26 @@
+
+{
+  "fearByCategory": [
+    { "category": "Profesional", "level": 65 },
+    { "category": "Personal", "level": 45 },
+    { "category": "Académico", "level": 80 },
+    { "category": "Social", "level": 55 }
+  ],
+  "emotionalImpact": [
+    { "name": "Parálisis", "value": 30, "color": "hsl(var(--destructive))" },
+    { "name": "Duda", "value": 45, "color": "hsl(var(--accent))" },
+    { "name": "Crecimiento", "value": 25, "color": "hsl(var(--primary))" }
+  ],
+  "confidenceTrend": [
+    { "month": "Ene", "val": 40 },
+    { "month": "Feb", "val": 45 },
+    { "month": "Mar", "val": 42 },
+    { "month": "Abr", "val": 55 },
+    { "month": "May", "val": 62 },
+    { "month": "Jun", "val": 75 }
+  ],
+  "keyMetrics": {
+    "resilienceIndex": 72,
+    "perfectionismBias": 58
+  }
+}
