@@ -1,4 +1,3 @@
-
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -28,7 +27,7 @@ export default function Home() {
         </div>
 
         <div className="container mx-auto px-4 z-10 text-center max-w-4xl">
-          <h1 className="text-5xl md:text-7xl font-bold mb-8 leading-tight animate-in fade-in slide-in-from-bottom-4 duration-1000 font-headline">
+          <h1 className="text-5xl md:text-7xl font-bold mb-8 leading-tight animate-in fade-in slide-in-from-bottom-4 duration-1000 font-headline text-primary">
             ¿Alguna vez has sentido miedo de tomar decisiones importantes por temor a equivocarte?
           </h1>
           <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed animate-in fade-in slide-in-from-bottom-6 duration-1000 delay-200">

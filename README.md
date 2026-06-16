@@ -1,12 +1,10 @@
-
 # Radiografía Social - Grupo 4
 
 Un proyecto de ética dedicado a analizar la influencia del miedo al error en la toma de decisiones personales y profesionales.
 
 ## Características del Proyecto
 - **Encuesta Interactiva:** Espacio seguro y anónimo para recolectar perspectivas sobre decisiones éticas mediante Microsoft Forms.
-- **Visualización de Datos:** Panel de resultados con gráficos dinámicos (recharts) que muestran el impacto del miedo y la presión social en una muestra real de 63 participantes.
-- **Análisis de IA:** Generador de dilemas y asistente de reflexión para profundizar en el proceso de toma de decisiones.
+- **Visualización de Datos:** Panel de resultados con gráficos dinámicos que muestran el impacto del miedo y la presión social en una muestra real de 63 participantes.
 - **Diseño Profesional:** Interfaz moderna y accesible construida con NextJS 15, Tailwind CSS y componentes ShadCN UI.
 
 ## Estructura del Sitio
