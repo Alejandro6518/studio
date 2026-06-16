@@ -1,3 +1,4 @@
+
 import data from './placeholder-images.json';
 
 export type ImagePlaceholder = {
@@ -9,6 +10,6 @@ export type ImagePlaceholder = {
 
 /**
  * All placeholder images in the app should only come from the JSON file.
- * This export ensures we always return an array to prevent 'find' errors.
+ * We ensure data is correctly typed and handled to avoid hydration errors.
  */
 export const PlaceHolderImages: ImagePlaceholder[] = (data as any)?.placeholderImages || [];

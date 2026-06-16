@@ -1,3 +1,4 @@
+
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -55,7 +56,7 @@ export default function Home() {
               <Sparkles className="w-4 h-4" />
               <span>JUSTIFICACIÓN DEL PROYECTO</span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold font-headline leading-tight">Por qué el miedo nos detiene</h2>
+            <h2 className="text-4xl md:text-5xl font-bold font-headline leading-tight text-primary">Por qué el miedo nos detiene</h2>
             <p className="text-lg leading-relaxed text-muted-foreground">
               La toma de decisiones es una parte fundamental de la vida de todas las personas. Sin embargo, el miedo a cometer errores puede generar inseguridad, ansiedad o incluso impedir que las personas actúen y persigan sus metas.
             </p>
@@ -71,7 +72,7 @@ export default function Home() {
                   <ShieldCheck className="w-8 h-8" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-xl mb-2 font-headline">Confianza Interna</h3>
+                  <h3 className="font-bold text-xl mb-2 font-headline text-primary">Confianza Interna</h3>
                   <p className="text-muted-foreground leading-relaxed">Identificar los bloqueos para fortalecer la seguridad al elegir nuestro camino.</p>
                 </div>
               </CardContent>
@@ -82,7 +83,7 @@ export default function Home() {
                   <Footprints className="w-8 h-8" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-xl mb-2 font-headline">Crecimiento Vital</h3>
+                  <h3 className="font-bold text-xl mb-2 font-headline text-primary">Crecimiento Vital</h3>
                   <p className="text-muted-foreground leading-relaxed">Entender que cada error es una pieza clave en la construcción de nuestra identidad.</p>
                 </div>
               </CardContent>
